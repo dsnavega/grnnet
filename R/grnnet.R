@@ -237,7 +237,8 @@ grnnet <- function(x, y,
                     grnnet_object <- grnnet(
                         x = x[train,, drop = F],
                         y = y[train,, drop = F],
-                        crossvalidation = F
+                        crossvalidation = F,
+                        alpha = alpha
                     )
 
                     grnnet_predicted <- predict(
@@ -266,7 +267,7 @@ grnnet <- function(x, y,
                 data = list(x = x, y = y, interval = interval),
                 sigma = optimal_sigma,
                 alpha = alpha,
-                predicted = if(condition) { predicted} else { NULL },
+                predicted = if(condition) { predicted } else { NULL },
                 estimate = estimate,
                 variance = variance,
                 conformity = list(
