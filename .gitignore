@@ -2,5 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+<<<<<<< HEAD
 .DS_Store
 .Rbuildignore
+=======
+>>>>>>> bcfc8374a25d0bafb10038572f1d5f7c33aa89a6
