@@ -1,5 +1,7 @@
 #' Evaluate \emph{grnnet} model
 #'
+#' @export
+#'
 #' @param object a \emph{grnnet} object
 #' @param digits number of digits in computed metrics
 #'
