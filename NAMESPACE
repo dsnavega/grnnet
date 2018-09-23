@@ -3,6 +3,7 @@
 S3method(predict,grnnet)
 S3method(print,grnnet)
 export(adjusted_r_squared)
+export(compute_descriptor)
 export(grnnet)
 export(mean_absolute_error)
 export(normalize)

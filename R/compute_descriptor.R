@@ -4,6 +4,8 @@
 #' function to facilitate row or column wise operations on matrix and data.frame
 #' objects.
 #'
+#' @export
+#'
 #' @param x A matrix or data.frame
 #' @param fun A function defining a descriptor to apply to x.
 #'
@@ -17,13 +19,6 @@
 #'
 #' @return A vector, data.frame/matrix or a list with the computed descriptor
 #' values
-#'
-#' @examples
-#' df <- iris[,-5]
-#' # Compute the mean of iris sepal and petal dimensions. Output is a vector.
-#' compute_descriptor(df, fun = mean, by = "col")
-#' # Compute the range of iris sepal and petal dimensions. Output is a list
-#' compute_descriptor(df, fun = range, by = "col")
 #'
 compute_descriptor <- function(x, fun, by = "col", ...) {
 
