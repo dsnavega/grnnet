@@ -9,7 +9,7 @@
 #'
 squared_exponential_kernel <- function(x, sigma) {
 
-    value <- exp(- (x ^ 2) / (sigma ^ 2))
+    value <- exp(-(x  / sigma) ^ 2)
 
     # return
     rout <- value
