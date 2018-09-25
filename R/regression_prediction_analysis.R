@@ -40,13 +40,14 @@ regression_prediction_analysis <- function(
   # Compute Metrics ----
   mae <- mean_absolute_error(known = known, predicted = predicted_vector)
   rmse <- root_mean_squared_error(known = known, predicted = predicted_vector)
+  nrmse <- root_mean_squared_error(known = known, predicted = predicted_vector, nrmse = T)
   rsquared <- r_squared(known = known, predicted = predicted_vector)
   bias <- prediction_bias(known = known, predicted = predicted_vector)
   coverage <- prediction_coverage(known = known, predicted = predicted_range)
   piw <- prediction_interval_width(predicted = predicted_range)
 
   metrics_vector <- c(
-    MAE = mae, RMSE = rmse,
+    MAE = mae, RMSE = rmse, NRMSE = nrmse,
     `R Squared` = rsquared, Bias = bias,
     Coverage = coverage, piw
   )
