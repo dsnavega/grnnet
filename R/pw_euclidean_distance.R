@@ -14,8 +14,8 @@
 pw_euclidean_distance <- function(x, y, weights = NULL) {
 
     # force numeric precision
-    x <- round(x, digits = 1)
-    y <- round(y, digits = 1)
+    x <- round(x, digits = 0)
+    y <- round(y, digits = 0)
 
     # x & y dimensions
     x_dimensions <- dim(x)
