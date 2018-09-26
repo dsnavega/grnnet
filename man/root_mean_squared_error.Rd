@@ -11,7 +11,7 @@ root_mean_squared_error(known, predicted, nrmse = F)
 
 \item{predicted}{predicted values (point estimates)}
 
-\item{nrmse}{a logical indicating if normalized rmse should be computed.
+\item{nrmse}{a logical indicating if IQR normalized rmse should be computed.
 Default is FALSE (F)}
 }
 \value{

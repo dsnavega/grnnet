@@ -1,6 +1,5 @@
 #' Quantile Estimation using Kernel Density Estimation
 #'
-#'
 #' @param x a numeric vector
 #' @param probs quantiles (cumulative probability value) to assess
 #'
@@ -9,11 +8,11 @@
 kde_quantile <- function(x, probs = c(0.001, 0.999)) {
 
     # evaluate density
-    kde <- density(x, na.rm = TRUE)
+    kde <- stats::density(x, na.rm = TRUE)
     kde_range <- range(kde$x)
 
     # approximate cumulative density function from kde object
-    cdf <- approxfun(x = kde$x, y = cumsum(kde$y / sum(kde$y)))
+    cdf <- stats::approxfun(x = kde$x, y = cumsum(kde$y / sum(kde$y)))
 
     # compute quantile with vectorization function
     compute_quantile <- function(q) {
@@ -27,7 +26,7 @@ kde_quantile <- function(x, probs = c(0.001, 0.999)) {
             return(rout)
         }
 
-        root_value <- uniroot(root_wrapper, interval = kde_range, q = q)$root
+        root_value <- stats::uniroot(root_wrapper, interval = kde_range, q = q)$root
 
         # return
         rout <- root_value

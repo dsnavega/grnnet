@@ -1,10 +1,8 @@
 #' Prediction Analysis for Regression
 #'
-#' @import ggplot2
 #' @import dplyr
 #' @import scales
-#'
-#' @export
+#' @import ggplot2
 #'
 #' @param known a vector of known values
 #' @param predicted a matrix of predicted values. Matrix should be organized in
