@@ -2,8 +2,6 @@
 #'
 #' Evaluates MAE on predictions of a regression model
 #'
-#' @export
-#'
 #' @param known known values
 #' @param predicted predicted values (point estimates)
 #'
@@ -23,11 +21,9 @@ mean_absolute_error <- function(known, predicted) {
 #'
 #' Evaluates RMSE on predictions of a regression model
 #'
-#' @export
-#'
 #' @param known known values
 #' @param predicted predicted values (point estimates)
-#' @param nrmse a logical indicating if normalized rmse should be computed.
+#' @param nrmse a logical indicating if IQR normalized rmse should be computed.
 #' Default is FALSE (F)
 #'
 #' @return RMSE (or NRMSE) value
@@ -37,7 +33,7 @@ root_mean_squared_error <- function(known, predicted, nrmse = F) {
   rmse <- sqrt(mean((known - predicted) ^ 2, na.rm = T))
   condition <- nrmse
   if(condition) {
-    rmse <- sqrt(mean((known - predicted) ^ 2, na.rm = T)) / IQR(known)
+    rmse <- sqrt(mean((known - predicted) ^ 2, na.rm = T)) / stats::IQR(known)
   }
   # return
   rout <- rmse
@@ -49,8 +45,6 @@ root_mean_squared_error <- function(known, predicted, nrmse = F) {
 #' R Squared
 #'
 #' Evaluates R Squared, Explained Variance, on predictions of a regression model
-#'
-#' @export
 #'
 #' @param known known values
 #' @param predicted predicted values (point estimates)
@@ -83,8 +77,6 @@ r_squared <- function(known, predicted) {
 #' Evaluate Regression Prediction Bias by the slope of the regression model of
 #' residuals on known values.
 #'
-#' @export
-#'
 #' @param known known values
 #' @param predicted predicted values (point estimates)
 #'
@@ -111,8 +103,6 @@ prediction_bias <- function(known, predicted) {
 #'
 #' Evaluates the coverage of prediction intervals.
 #'
-#' @export
-#'
 #' @param known known values
 #' @param predicted predicted values (prediction interval, lower and upper value)
 #'
@@ -137,8 +127,6 @@ prediction_coverage <- function(known, predicted) {
 #' Prediction Interval Mean Width
 #'
 #' Evaluates mean width of prediction intervals as a measure of efficiency
-#'
-#' @export
 #'
 #' @param predicted predicted values (prediction interval, lower and upper value)
 #'
@@ -165,7 +153,7 @@ prediction_interval_width <- function(predicted) {
   p_vector <-c(0.5, 0.025, 0.975)
   piw_names <- c("PIW", "PIW (0.025)", "PIW (0.975)")
   range_values <- apply(predicted, MARGIN = 1, FUN = range_value)
-  piw <- quantile(range_values, probs = p_vector, na.rm = T)
+  piw <- stats::quantile(range_values, probs = p_vector, na.rm = T)
   piw[1] <- mean(range_values, na.rm = T)
   piw <- as.numeric(piw)
   names(piw) <- piw_names
@@ -180,8 +168,6 @@ prediction_interval_width <- function(predicted) {
 #'
 #' Evaluates Adjusted R Squared, Explained Variance, on predictions of a
 #' regression model.
-#'
-#' @export
 #'
 #' @param known known values
 #' @param predicted predicted values (point estimates)
@@ -213,8 +199,6 @@ adjusted_r_squared <- function (known, predicted, p) {
 #'
 #' Evaluates Weighted R Squared, Explained Variance, on predictions of a
 #' regression model.
-#'
-#' @export
 #'
 #' @param known known values
 #' @param predicted predicted values (point estimates)

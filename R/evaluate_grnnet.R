@@ -1,11 +1,17 @@
 #' Evaluate \emph{grnnet} model
 #'
 #' @export
+#' @author David Navega
 #'
 #' @param object a \emph{grnnet} object
 #' @param digits number of digits in computed metrics
 #'
 #' @return relevant metrics for \emph{grnnet} output
+#'
+#' @examples
+#' model <- grnnet(iris[,1:2], iris[,3:4])
+#' evaluate_grnnet(model)
+#'
 evaluate_grnnet <- function(object, digits = 2) {
 
   condition <- class(object) != "grnnet"

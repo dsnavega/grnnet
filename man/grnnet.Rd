@@ -4,7 +4,7 @@
 \alias{grnnet}
 \title{Generalized Regression Neural Network}
 \usage{
-grnnet(x, y, alpha = 0.1, crossvalidation = T, kfold = 5,
+grnnet(x, y, alpha = 0.05, crossvalidation = T, kfold = 5,
   seed = 1984)
 }
 \arguments{

@@ -126,7 +126,7 @@ grnnet <- function(x, y,
       }
 
       # optimize sigma -> train network ----
-      optimal_grnnet <- optimize(
+      optimal_grnnet <- stats::optimize(
         f = optimization_wrapper,
         interval = c(lower, upper)
       )
@@ -206,7 +206,7 @@ grnnet <- function(x, y,
       conformity_score <- network_error / variance
       conformity_factor <- compute_descriptor(
         x = conformity_score,
-        fun = quantile,
+        fun = stats::quantile,
         probs = 1 - alpha
       )
 
@@ -442,7 +442,7 @@ predict.grnnet <- function(object, newdata, alpha = NULL, ...) {
 
         conformity_score <- object$conformity$score
         conformity_factor <- compute_descriptor(
-          x = conformity_score, fun = quantile, probs = 1 - alpha
+          x = conformity_score, fun = stats::quantile, probs = 1 - alpha
         )
 
       }

@@ -17,3 +17,11 @@ relevant metrics for \emph{grnnet} output
 \description{
 Evaluate \emph{grnnet} model
 }
+\examples{
+model <- grnnet(iris[,1:2], iris[,3:4])
+evaluate_grnnet(model)
+
+}
+\author{
+David Navega
+}
