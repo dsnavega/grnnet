@@ -13,10 +13,6 @@
 #'
 pw_euclidean_distance <- function(x, y, weights = NULL) {
 
-    # force numeric precision
-    x <- round(x, digits = 0)
-    y <- round(y, digits = 0)
-
     # x & y dimensions
     x_dimensions <- dim(x)
     y_dimensions <- dim(y)
@@ -56,15 +52,18 @@ pw_euclidean_distance <- function(x, y, weights = NULL) {
             # x_dot <- diag(tcrossprod(x, x))
             x_dot <- diag(x %*% weights %*% t(x))
             x_dot <- matrix(x_dot, nrow = n, ncol = m)
+            x_dot <- round(x_dot, digits = 1)
 
             # Y Dot Product
             # y_dot <- diag(tcrossprod(y, y))
             y_dot <- diag(y %*% weights %*% t(y))
             y_dot <- matrix(y_dot, nrow = n, ncol = m, byrow = T)
+            y_dot <- round(y_dot, digits = 1)
 
             # XY Dot Product
             # xy_dot <- t(tcrossprod(y, x))
             xy_dot <- t(y %*% weights %*% t(x))
+            xy_dot <- round(xy_dot, digits = 1)
 
             # Euclidean Distance Formula Expansion
             euclidean_distance <- sqrt(x_dot + y_dot - 2 * xy_dot)
