@@ -71,12 +71,12 @@ grnnet <- function(x, y,
       )
 
       # bounding values for smoothing parameter ----
-      # # Eq. (30) & (36) Tomandl & Schober [2001]
+      # Eq. (30) & (36) Tomandl & Schober [2001]
       # phi <- (2 * log(.Machine$double.eps))
       # lower <- sqrt(min(distance_matrix[distance_matrix != 0]) / phi)
       # upper <- 0.5 * max(distance_matrix)
 
-      optimization_bounds <- range(distance_matrix[distance_matrix != 0])
+      optimization_bounds <- range(distance_matrix[distance_matrix != 0], na.rm = T)
       lower <- sqrt(0.5 * optimization_bounds[1])
       upper <- sqrt(0.5 * optimization_bounds[2])
 
@@ -107,20 +107,24 @@ grnnet <- function(x, y,
           predicted <- as.matrix(predicted)
         }
 
-        nrmse_vector <- sapply(seq_len(noutput), function(j) {
+        objective_vector <- sapply(seq_len(noutput), function(j) {
 
-          root_mean_squared_error(
+          nrmse <- root_mean_squared_error(
             known = y[, j],
             predicted = predicted[, j],
             nrmse = T
           )
 
+          # return
+          rout <- nrmse
+          return(rout)
+
         })
 
-        mean_nrmse <- mean(nrmse_vector)
+        mean_objective <- mean(objective_vector)
 
         # return
-        rout <- mean_nrmse
+        rout <- mean_objective
         return(rout)
 
       }

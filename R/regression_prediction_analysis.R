@@ -58,7 +58,7 @@ regression_prediction_analysis <- function(
   subtitle <- paste0(
     "MAE: ", metrics_frame[1],
     "; RSME: ", metrics_frame[2],
-    "; R Squared: ", metrics_frame[3]
+    "; R Squared: ", metrics_frame[4]
   )
   identity_data <- data.frame(Known = y_min:y_max, Predicted = y_min:y_max)
   scatter_data <-data.frame(Known = known, Predicted = predicted_vector)
@@ -102,8 +102,8 @@ regression_prediction_analysis <- function(
 
   title <- "Predictive Interval Analysis"
   subtitle <- paste0(
-    "Average Predictive Interval Width: ", metrics_frame[6],
-    "\nCoverage Probability: ", metrics_frame[5]
+    "Average Predictive Interval Width: ", metrics_frame[7],
+    "\nCoverage Probability: ", metrics_frame[6]
   )
   predictive_interval_plot <- ggplot(data = piw_data) +
     geom_point(mapping = aes(x = Index, y = Known)) +
